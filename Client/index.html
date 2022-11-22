@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>WebSockets demo for HTML5 Games Development: A Beginner's Guide</title>
+  <script src="https://cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser-arcade-physics.min.js"></script> 
+</head>
+<body>
+  <!-- game elements goes here later -->
+  <input type="button" value="Sign In" id="signin" onclick="SignIn()">
+  <input type="text" id="user-input" autocomplete="off">
+<br>
+<br>
+  <input type="button" value="Join Game" id="join" onclick="JoinRoom()">
+  <input type="text" id="code-input" autocomplete="off">
+<br>
+<br>
+  <input type="button" value="Create Game" id="send" onclick="CreateRoom()">
+  <input type="text" id="num-players" autocomplete="off">
+<br>
+<br>
+<h2 id="code"></h2>
+<br>
+<br>
+  <div id="paintArea">
+  <canvas id='canvas' width='500' height='400'>
+  </canvas>
+  </div>
+  <section>
+    <div id="timer" class="container">
+      <h3>60</h3>
+    </div>
+  </section>
+  <h3 id="score">SCORE: 0</h3>
+  <style>
+    canvas{position:relative;}
+  </style>
+  <ul id="chat-history"></ul>
+  <input type="text" id="chat-input" autocomplete="off">
+  <input type="button" value="Send" id="send" onclick="sendMessage()">
+  <script src="client.js"></script>
+</body>
+</html>
