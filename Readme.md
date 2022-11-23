@@ -1,4 +1,4 @@
-#  ========Structure===========
+#  Structure
 
 ------
     |
@@ -15,14 +15,22 @@
          ---client.js
          |
          ---index.html
+         |
+         ---indexJS.js
+         |
+         ---login.html
+         |
+         ---loginstyle.css
+         |
+         ---gamewallpaper1.jpg
          
-##  ==========Packages=========== 
+##  Packages
 
 ### Node.js
 
 ### WebSockets
 
-## ==========Files==============
+## Files
 
 - server.js
 
@@ -45,7 +53,7 @@ the webpage. It implements the canvas required for drawing the image as well as 
 
 This is the webpage for any client that joins the game. Contains the canvas and the chat box  and options to sign-in/login and Join/Create room.
 
-## ===========Working==================
+## Working
 
 1. To run the game simply open the terminal in Server folder and execute "node server.js". This would start the server at port 8000. To join the game simply open index.html.
 
