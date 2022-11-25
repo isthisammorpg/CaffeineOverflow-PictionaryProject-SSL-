@@ -42,7 +42,7 @@ let context = canvas.getContext('2d');
 //---------------//
 let colorsRef = document.getElementsByClassName("colors");
 
-let backgroundButton = document.getElementById("color-background");
+// let backgroundButton = document.getElementById("color-background");
 let colorButton = document.getElementById("color-input");
 let clearButton = document.getElementById("button-clear");
 let eraseButton = document.getElementById("button-erase");
@@ -64,7 +64,7 @@ const init = () => {
   toolType.innerHTML = "Pen";
   //Set background and color inputs initially
   canvas.style.backgroundColor = "#ffffff";
-  backgroundButton.value = "#ffffff";
+  // backgroundButton.value = "#ffffff";
   penButton.value = context.strokeStyle;
 };
 //---------------//
@@ -103,7 +103,7 @@ function $(x) {return document.getElementById(x);}
       
    }
    if (data.dataType === websocketGame.CODE) { //Displaying the Code
-    $("code").innerHTML=data.message;
+    $("code").innerHTML="ROOM CODE: " + data.message;
  }
  if (data.dataType === websocketGame.LEADERBOARD) { //
     websocketGame.users.push(data.player);
@@ -123,6 +123,8 @@ function $(x) {return document.getElementById(x);}
    }
       console.log(websocketGame.users);
       console.log(websocketGame.scores);
+
+
       let table = document.getElementById('mytable');
 let thead = document.createElement('thead');
 let tbody = document.createElement('tbody');
@@ -156,6 +158,8 @@ tbody.appendChild(row_2);
 
 }
     }
+    const box3 = document.getElementById('LeaderBrd');
+    box3.style.display='block';
     //console.log(websocketGame.users[0] + "|" + websocketGame.users[1])
     //console.log(websocketGame.scores[0] + "|" + websocketGame.scores[1]);
 }
@@ -167,7 +171,7 @@ tbody.appendChild(row_2);
     if(data.is_clear == websocketGame.CLEAR){
       context.clearRect(0, 0, canvas.width, canvas.height);
       canvas.style.backgroundColor = "#ffffff";
-      backgroundButton.value = "#ffffff";
+      // backgroundButton.value = "#ffffff";
     }
     else{
     context.beginPath();
@@ -389,18 +393,18 @@ colorButton.addEventListener("change", () => {
 });
 
 //Change Background
-backgroundButton.addEventListener("change", () => {
-  if (websocketGame.isTurnToDraw){
-  //canvas.style.backgroundColor = backgroundButton.value;
-}
-});
+// backgroundButton.addEventListener("change", () => {
+//   if (websocketGame.isTurnToDraw){
+//   //canvas.style.backgroundColor = backgroundButton.value;
+// }
+// });
 
 //Clear
 clearButton.addEventListener("click", () => {
   if (websocketGame.isTurnToDraw){
   context.clearRect(0, 0, canvas.width, canvas.height);
   canvas.style.backgroundColor = "#ffffff";
-  backgroundButton.value = "#ffffff";
+  // backgroundButton.value = "#ffffff";
   var data = {};
   data.dataType = websocketGame.LINE_SEGMENT;
   data.is_clear = websocketGame.CLEAR;

@@ -45,8 +45,8 @@ function Room(num_players) {
     var data = {
       dataType: CHAT_MESSAGE,
       sender: "Server",
-      message: "Welcome " + user.id 
-         + " joining the party. Total connection: " + this.users.length
+      message: "Welcome " + user.name 
+         + " !!!. Total Players : " + this.users.length
     };  
     room.sendAll(JSON.stringify(data));
     this.handleOnUserMessage(user);
@@ -168,7 +168,7 @@ function Room(num_players) {
     
     
     // game over the game after 1 minute.
-    this.timeSecond = 20;
+    this.timeSecond = 10;
     const countDown = setInterval(() => {
     this.timeSecond--;
     var timeforplayers = {

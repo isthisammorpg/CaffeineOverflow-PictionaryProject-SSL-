@@ -75,18 +75,112 @@ footer {
       <h3 style="color:#000000 ;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> SCRIBBLE</h3>
     </div>
   </div>
+
+  <!-- Profile  -->
+  <style>
+    .card{
+      position: absolute;
+      top:20%;
+      right:10%;
+      background-color: #fff;
+      width: 280px;
+      border-radius: 33px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      padding: 2rem !important;
+    }
+    .top-container{
+      display: flex;
+      align-items: center;
+    }
+    .profile-image{
+      border-radius: 10px;
+      border: 2px solid #5957f9;
+    }
+    .name{
+      font-size: 15px;
+      font-weight: bold;
+      color: #272727;
+      position: relative;
+      top: 8px;
+      padding-left: 15px;
+    }
+    .mail{
+      font-size: 14px;
+      color: grey;
+      position: relative;
+      top: -15px;
+      padding-left: 15px;
+    }
+    .middle-container{
+      background-color: #eee;
+      border-radius: 12px;
+    
+    }
+    .middle-container:hover {
+      border: 1px solid #5957f9;
+    }
+
+    .highscore-border:hover {
+      border-bottom: 1px solid #dee2e6!important;
+    }
+    
+    .highscore{
+      font-size: 16px;
+      font-weight: 700;
+      color: #272727;
+      padding-right: 10px;
+    }
+    
+    .NoGames{
+      font-size: 16px;
+      font-weight: 700;
+      color: #272727;
+      padding-right: 10px;
+    
+    }
+    .NoGames-border:hover{
+      border-bottom: 1px solid #dee2e6!important;
+    }
+
+  </style>
+  <div id="profilediv" class="container d-flex justify-content-center mt-5">
+    <div class="card">
+      <div class="top-container">
+        <img src="profilePic.jpg" class="img-fluid profile-image" width="70">      
+        <div class="ml-3">
+          <h5 class="name">Hrushi</h5>
+          <!-- UserName here -->
+          <p class="mail">hrushikesh2109@gmail.com</p>
+          <!-- Email address here -->
+        </div>
+      </div>
+      <div class="highscore-border mt-4">
+        <span class="highscore">HighScore : </span>
+        <span >0</span>
+        <!-- give highscore here -->
+      </div>
+      <div class="NoGames-border pt-2">
+        <span class="NoGames">No. Of Games Played : </span>
+        <span >0</span>
+        <!-- Update No. of games here -->
+      </div>
+    </div>
+  </div>
+
   <!-- game elements goes here later -->
-  <div id="roomboxes" style="text-align: center;">
-    <input type="button" class="button" value="Sign In" id="signin" style="position:absolute;top:20%" onclick="SignIn()">
-    <input type="text" id="user-input" autocomplete="off" style="position:absolute;top:19%;left:34%;"  placeholder="Your name..">
+  <div id="UserNameField"style="text-align: center;">
+    <input type="button" class="button" value="Play Now" id="signin" style="position:absolute;top:30%" onclick="SignIn();EnteredUserName()">
+    <input type="text" id="user-input" autocomplete="off" style="position:absolute;top:29%;left:36%;"  placeholder="Enter User Name..">
+  </div>
+  <div id="roomboxes" style="text-align: center;display:none">
   <br>
   <br>
-    <input type="button" class="button" value="Join Game" id="join" style="position:absolute;top:40%" onclick="JoinRoom();hideAndShow();">
-    <input type="text" id="code-input" autocomplete="off" style="position:absolute;top:39%;left:34%;"  placeholder="ROOM ID">
+    <input type="button" class="button" value="Join Game" id="join" style="position:absolute;top:25%" onclick="JoinRoom();hideAndShow();">
+    <input type="text" id="code-input" autocomplete="off" style="position:absolute;top:24%;left:36%;"  placeholder="ROOM ID">
   <br>
   <br>
-    <input type="button" class="button" value="Create Game" id="send" style="position:absolute;top:60%"  onclick="CreateRoom();hideAndShow();">
-    <input type="text" id="num-players" autocomplete="off" style="position:absolute;top:59%;left:34%;"  placeholder="No. of players">
+    <input type="button" class="button" value="Create Game" id="send" style="position:absolute;top:35%"  onclick="CreateRoom();hideAndShow();">
+    <input type="text" id="num-players" autocomplete="off" style="position:absolute;top:34%;left:36%;"  placeholder="No. of players">
   <br>
   <br>
   </div>
@@ -107,10 +201,10 @@ right: 400px; color: aliceblue;font-family:'Trebuchet MS', 'Lucida Sans Unicode'
     .options {
       position: absolute;
       top: 600px;
-      left: 50px;
+      left: 150px;
       height:max-content;
       width: max-content;
-      background-color:#404040;
+      background-color:#627196;
       padding: 5px;
       border: 2px solid black; 
       border-radius: 25px;
@@ -134,7 +228,7 @@ right: 400px; color: aliceblue;font-family:'Trebuchet MS', 'Lucida Sans Unicode'
       border: none;
       background-color: #ffffff;
       font-size: 14px;
-      color: #788eff;
+      color: #050e3f;
     }
     input[type="range"] {
       height: 40px;
@@ -169,10 +263,10 @@ right: 400px; color: aliceblue;font-family:'Trebuchet MS', 'Lucida Sans Unicode'
           <h5>Color:</h5>
           <input type="color" id="color-input" />
         </div>
-        <div class="tools-wrapper">
+        <!-- <div class="tools-wrapper">
           <h5>Background Color:</h5>
           <input type="color" id="color-background" />
-        </div>
+        </div> -->
       </div>
       <div class="tools-row">
         <button id="button-clear">Clear</button>
@@ -195,21 +289,34 @@ right: 400px; color: aliceblue;font-family:'Trebuchet MS', 'Lucida Sans Unicode'
   top: 10px;
   left: 40px;color: aliceblue;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;" id="score">SCORE: 0</h3>
   <div class="chat" style ="position: absolute;
-  top: 100px;
-  left :800px;
+  top: 10%;
+  right:5%;
   width :500px;
-  height : 400px;
+  height : 700px;
   border: 2px solid #404040; 
-  background-color: #666;
+  background-color: #1c9fcb;
   border-radius: 25px;
   ">
+  <h2 style="text-align: center;">CHAT BOX</h2>
   <ul id="chat-history"></ul>
-  <table id="mytable"></table>
-  <input style="position:absolute;bottom:10px;left: 20px;" type="text" id="chat-input" placeholder="type your message here"  autocomplete="off">
-  <input class="button" type="button" value="Send" id="send" style="position:absolute;bottom:18px;left: 250px;" onclick="sendMessage()"></div>
+  <input style="position:absolute;bottom:10px;left: 25%;" type="text" id="chat-input" placeholder="type your message here"  autocomplete="off">
+  <input class="button" type="button" value="Send" id="send" style="position:absolute;bottom:18px;right: 18%;" onclick="sendMessage()"></div>
   <script src="client.js"></script>
 </section>
-<table id="mytable"></table>
+<div id="LeaderBrd" style="display:none  ;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;position:relative;top:200px;left:33%; width:33%;height:max-content;border: 2px solid black;border-radius: 10px;background: -webkit-linear-gradient(left, #655e66, #1b1a1b);z-index: index 4;">
+  <h1 style="text-align:center ;">LeaderBoard : </h3>
+  <table id="mytable">
+    <style>
+      td, th {
+      padding: 5px 80px;
+       text-align: left;
+       color: aliceblue;
+      }
+    </style>
+  </table>
+  <br>
+  <br>
+</div>
 <footer>
   <div style="float: center;">
     <h3 style="color:#000000 ;font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;"> Thanks for playing our game <br> TEAM CAFFIENE OVERFLOW </h3>
