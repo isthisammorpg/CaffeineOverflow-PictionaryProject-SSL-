@@ -257,6 +257,7 @@ function SignIn(){
   console.log($("user-input").value);
   websocketGame.userName = $("user-input").value;
   $("user-input").value="";
+  $("playerName").innerHTML=websocketGame.userName;
 }
 function JoinRoom(){
     var code = $("code-input").value;

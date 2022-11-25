@@ -11,4 +11,6 @@ function EnteredUserName(){
     const box5 = document.getElementById('roomboxes');
     box5.style.display='block';
     box4.style.display='none';
+    const box7 = document.getElementById('profilediv');
+    box7.style.display='block';
 }

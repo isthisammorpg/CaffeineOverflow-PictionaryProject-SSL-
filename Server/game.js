@@ -26,7 +26,7 @@ function Room(num_players) {
     this.playerTurn = -1;
     this.timeSecond = 60;
 
-  this.wordsList = ['apple','football','sun','ice-cream','leaf'];
+  this.wordsList = ['apple','football','sun','umbrella','leaf','chain','laptop','mountain','thunder'];
   this.currentAnswer = undefined;
 
   this.currentGameState = WAITING_TO_START;
@@ -168,7 +168,7 @@ function Room(num_players) {
     
     
     // game over the game after 1 minute.
-    this.timeSecond = 10;
+    this.timeSecond = 60;
     const countDown = setInterval(() => {
     this.timeSecond--;
     var timeforplayers = {
