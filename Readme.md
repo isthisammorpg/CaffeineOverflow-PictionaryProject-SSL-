@@ -1,4 +1,4 @@
-#  Structure
+##  Structure
 
 ------
     |
@@ -22,13 +22,17 @@
          |
          ---loginstyle.css
          |
+         ---gamewallpaper0.jpg
+         |
          ---gamewallpaper1.jpg
+         |
+         ---profilePic.jpg
          
 ##  Packages
 
-### Node.js
+#### - Node.js
 
-### WebSockets
+#### - WebSockets
 
 ## Files
 
