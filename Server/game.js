@@ -11,6 +11,7 @@ var GAME_RESTART = 3;
 var GUESSED_RIGHT=4;
 var ROUND_OVER = 5;
 var USER_ANS_RIGHT = 7;
+var LEADERBOARD = 69;
 
 
 function User(socket,name) {
@@ -79,11 +80,11 @@ function Room(num_players) {
           + user.id + ": " + message); 
     
     var data = JSON.parse(message);
-    if (data.dataType === CHAT_MESSAGE) {
-      // add the sender information into the message data object.
-      data.sender = user.name;
-    }
-    room.sendAll(JSON.stringify(data));
+    // if (data.dataType === CHAT_MESSAGE) {
+    //   // add the sender information into the message data object.
+    //   data.sender = user.name;
+    // }
+   
     
     // check if the message is guessing right or wrong
     if (data.dataType === CHAT_MESSAGE) {
@@ -106,13 +107,27 @@ function Room(num_players) {
           gameState: USER_ANS_RIGHT,
           score_update: room.timeSecond
         };
-        room.sendAll(JSON.stringify(gameLogicData));
         user.socket.send(JSON.stringify(gameLogicWinner));
+        room.sendAll(JSON.stringify(gameLogicData));
+        
       }
+      else{
+        data.sender = user.name;
+        room.sendAll(JSON.stringify(data));
+      }
+    }
+    if (data.dataType === LINE_SEGMENT) {
+    room.sendAll(JSON.stringify(data));
     }
     
     if (data.gameState === GAME_OVER) {
       user.score=parseInt(data.score);
+      var LeaderBoardData = {
+        dataType: LEADERBOARD,
+        player: user.name,
+        scores: user.score
+      };
+      room.sendAll(JSON.stringify(LeaderBoardData));
       console.log(user.name+" : "+user.score);
     }
   });
@@ -153,7 +168,7 @@ function Room(num_players) {
     
     
     // game over the game after 1 minute.
-    this.timeSecond = 60;
+    this.timeSecond = 20;
     const countDown = setInterval(() => {
     this.timeSecond--;
     var timeforplayers = {
@@ -185,6 +200,7 @@ function Room(num_players) {
             var gameoverData = {
               dataType: GAME_LOGIC,
               gameState: GAME_OVER,
+              numofplayers: room.users.length
             };
             room.sendAll(JSON.stringify(gameoverData));
             room.currentGameState = GAME_OVER;

@@ -35,7 +35,6 @@ server.on('connection', function(socket) {
         data.message = new_code;
         socket.send(JSON.stringify(data));
         console.log("New code: " + new_code);
-        
       }
     }
   }
